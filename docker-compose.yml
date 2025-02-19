@@ -15,9 +15,9 @@ services:
         ports:
             - "8081:8000"
         command: >
-            sh -c "mv .env.example .env &&
+            sh -c "cp .env.example .env &&
+                   touch database/database.sqlite &&
                    composer install &&
                    composer dump-autoload &&
-                   touch database/database.sqlite &&
                    php artisan migrate &&
                    php artisan serve --host=0.0.0.0 --port=8000"
