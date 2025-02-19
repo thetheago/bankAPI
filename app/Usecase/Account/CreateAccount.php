@@ -13,11 +13,8 @@ use Illuminate\Database\UniqueConstraintViolationException;
 
 class CreateAccount
 {
-    private IAccountRepository $accountRepository;
-
-    public function __construct(IAccountRepository $accountRepository)
+    public function __construct(private IAccountRepository $accountRepository)
     {
-        $this->accountRepository = $accountRepository;
     }
 
     public function execute(CreateAccountInput $input): CreateAccountOutput

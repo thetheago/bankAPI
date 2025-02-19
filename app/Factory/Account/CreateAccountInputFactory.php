@@ -4,11 +4,13 @@ declare(strict_types=1);
 
 namespace App\Factory\Account;
 
-use App\Dto\Account\CreateAccountInput;
-use App\ValueObject\Amount;
 use Illuminate\Http\Request;
 
-class CreateAccountInputFactory
+use App\Dto\Account\CreateAccountInput;
+use App\Interface\IInputDTOFactory;
+use App\ValueObject\Amount;
+
+class CreateAccountInputFactory implements IInputDTOFactory
 {
     public static function createFromRequest(Request $request): CreateAccountInput
     {
