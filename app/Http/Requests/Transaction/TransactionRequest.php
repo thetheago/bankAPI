@@ -18,7 +18,7 @@ class TransactionRequest extends FormRequest
         return [
             'forma_pagamento' => ['required', 'string', 'in:P,C,D'],
             'numero_conta' =>  ['required', 'numeric', 'min:1'],
-            'valor' => ['required', 'numeric', 'min:1', 'decimal:0,4']
+            'valor' => ['required', 'numeric', 'min:0,1', 'decimal:0,4']
         ];
     }
 
@@ -33,7 +33,7 @@ class TransactionRequest extends FormRequest
             'numero_conta.min' => 'O número da conta deve ser maior que 0.',
             'valor.required' => 'O valor é obrigatório.',
             'valor.numeric' => 'O valor deve ser um número.',
-            'valor.min' => 'O valor mínimo é 1.',
+            'valor.min' => 'O valor mínimo par a transação é de 0.1 centavos.',
             'valor.decimal' => 'O valor deve conter no máximo 4 digitos de centavos.'
         ];
     }

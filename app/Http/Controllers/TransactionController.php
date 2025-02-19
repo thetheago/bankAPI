@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use App\Factory\Transaction\TransactionInputFactory;
+use App\Http\Resources\TransactionResource;
 use App\Repository\Account\AccountRepository;
 use App\Repository\Transaction\TransactionRepository;
 use App\Usecase\Transaction\TransactionUseCase;
 use Illuminate\Http\JsonResponse;
 
 use App\Http\Requests\Transaction\TransactionRequest;
+use Symfony\Component\HttpFoundation\Response;
 
 class TransactionController extends Controller
 {
@@ -23,10 +25,8 @@ class TransactionController extends Controller
             transactionRepository:  new TransactionRepository()
         );
 
-        $useCase->execute($input);
+        $output = $useCase->execute($input);
 
-//        $output = $useCase->execute($input);
-//
-//        return AccountResource::make($output)->response()->setStatusCode(Response::HTTP_CREATED);
+        return TransactionResource::make($output)->response()->setStatusCode(Response::HTTP_CREATED);
     }
 }

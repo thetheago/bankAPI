@@ -13,7 +13,7 @@ class TransactionRepository implements ITransactionRepository
     public function storeTransaction(TransactionInput $input)
     {
         return Transaction::query()->create([
-            'accountNumber' => $input->accountNumber,
+            'account_number' => $input->accountNumber,
             'amount' => $input->getAmount()
         ]);
     }
