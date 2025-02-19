@@ -15,7 +15,8 @@ services:
         ports:
             - "8081:8000"
         command: >
-            sh -c "composer install &&
+            sh -c "mv .env.example .env &&
+                   composer install &&
                    composer dump-autoload &&
                    touch database/database.sqlite &&
                    php artisan migrate &&
