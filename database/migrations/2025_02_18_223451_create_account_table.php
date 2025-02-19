@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('account', function (Blueprint $table) {
             $table->id();
-            $table->integer('account_number');
+            $table->integer('account_number')->unique();
             $table->bigInteger('amount');
-            $table->bigInteger('version');
+            $table->bigInteger('version')->default(1);
             $table->timestamps();
         });
     }
