@@ -6,6 +6,5 @@ namespace App\Dto\Account;
 
 class GetOneAccountInput
 {
-    public function __construct(private(set) int $accountNumber)
-    {}
+    public function __construct(private(set) int $accountNumber) {}
 }
