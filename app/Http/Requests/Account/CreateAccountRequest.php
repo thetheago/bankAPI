@@ -16,8 +16,8 @@ class CreateAccountRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'numero_conta' => 'required|numeric|min:1',
-            'saldo' => 'required|numeric|min:0',
+            'numero_conta' => ['required', 'numeric', 'min:1'],
+            'saldo' => ['required', 'numeric', 'min:0', 'decimal:0,4']
         ];
     }
 
@@ -29,7 +29,8 @@ class CreateAccountRequest extends FormRequest
             'numero_conta.min' => 'O número da conta deve ser maior que 0',
             'saldo.required' => 'O saldo é obrigatório.',
             'saldo.numeric' => 'O saldo deve ser um número.',
-            'saldo.min' => 'O saldo deve ser um número maior que 0.'
+            'saldo.min' => 'O saldo deve ser um número maior que 0.',
+            'saldo.decimal' => 'O saldo deve conter no máximo 4 digitos de centavos.'
         ];
     }
 }
