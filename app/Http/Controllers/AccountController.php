@@ -5,16 +5,16 @@ declare(strict_types=1);
 namespace App\Http\Controllers;
 
 use Illuminate\Http\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 
-use App\Http\Requests\GetOneAccountRequest;
-use App\Http\Resources\AccountResource;
-use App\Usecase\Account\GetOneAccount;
-use App\Usecase\Account\CreateAccount;
-use App\Http\Requests\CreateAccountRequest;
-use App\Repository\Account\AccountRepository;
-use App\Factory\Account\GetOneAccountInputFactory;
 use App\Factory\Account\CreateAccountInputFactory;
+use App\Factory\Account\GetOneAccountInputFactory;
+use App\Http\Requests\Account\CreateAccountRequest;
+use App\Http\Requests\Account\GetOneAccountRequest;
+use App\Http\Resources\AccountResource;
+use App\Repository\Account\AccountRepository;
+use App\Usecase\Account\CreateAccount;
+use App\Usecase\Account\GetOneAccount;
+use Symfony\Component\HttpFoundation\Response;
 
 class AccountController extends Controller
 {

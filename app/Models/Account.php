@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Account extends Model
 {
+    public int $version;
     /**
      * The table associated with the model.
      *
@@ -13,8 +14,16 @@ class Account extends Model
      */
     protected $table = 'account';
 
+
+
     protected $fillable = [
         'account_number',
-        'amount'
+        'amount',
+        'version'
     ];
+
+    public function transactions()
+    {
+        return $this->hasMany(Transaction::class, 'account_number', 'account_number');
+    }
 }
