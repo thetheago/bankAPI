@@ -7,6 +7,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\CreateAccountRequest;
 use App\Factory\Account\CreateAccountInputFactory;
+use App\Repository\Account\AccountRepository;
+use App\Usecase\Account\CreateAccount;
 use Symfony\Component\HttpFoundation\Response;
 
 class AccountController extends Controller
@@ -15,9 +17,12 @@ class AccountController extends Controller
     {
         $input = CreateAccountInputFactory::createFromRequest($request);
 
-//        $useCase = new UseCase(Repository, Input);
-//        $output = $useCase->execute($input);
+        $useCase = new CreateAccount(new AccountRepository());
+        $output = $useCase->execute($input);
 
-//        return 200 & json
+        return response()->json([
+            'numero_conta' => $output->getAccountNumber(),
+            'saldo' => $output->getAmount()
+        ])->setStatusCode(Response::HTTP_CREATED);
     }
 }

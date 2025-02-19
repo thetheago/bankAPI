@@ -20,4 +20,12 @@ class CreateAccountRequest extends FormRequest
             'saldo' => 'required|numeric|min:0',
         ];
     }
+
+    public function messages(): array
+    {
+        return [
+            'numero_conta.required' => 'A title is required',
+            'saldo.required' => 'A message is required',
+        ];
+    }
 }

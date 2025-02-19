@@ -10,11 +10,7 @@ class AbstractCreateAccountInput
 {
     protected Amount $amount;
 
-    protected int $accountNumber {
-        get {
-            return $this->accountNumber;
-        }
-    }
+    protected int $accountNumber;
 
     public function __construct(Amount $amount, int $accountNumber)
     {
@@ -22,9 +18,9 @@ class AbstractCreateAccountInput
         $this->accountNumber = $accountNumber;
     }
 
-    public function getAmount(): int
+    public function getAccountNumber(): int
     {
-        return $this->amount->floatToMicro();
+        return $this->accountNumber;
     }
 
 }

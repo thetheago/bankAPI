@@ -6,15 +6,15 @@ namespace App\Dto\Account;
 
 use App\ValueObject\Amount;
 
-class CreateAccountInput extends AbstractCreateAccountInput
+class CreateAccountOutput extends AbstractCreateAccountInput
 {
     public function __construct(Amount $amount, int $accountNumber)
     {
         parent::__construct($amount, $accountNumber);
     }
 
-    public function getAmount(): int
+    public function getAmount(): float
     {
-        return $this->amount->floatToMicro();
+        return $this->amount->microToFloat();
     }
 }
