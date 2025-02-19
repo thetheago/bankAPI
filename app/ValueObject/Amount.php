@@ -21,12 +21,12 @@ class Amount
         $this->amount = new Number((string) $amount);
     }
 
-    public function microToFloat(): float
+    public function getFloat(): float
     {
         return (float) $this->amount->div((string) self::MICRO_BASE)->value;
     }
 
-    public function floatToMicro(): int
+    public function getMicro(): int
     {
         return (int) $this->amount->mul((string) self::MICRO_BASE)->value;
     }

@@ -16,6 +16,6 @@ class TransactionOutput extends AbstractTransactionDTO
 
     public function getAmount(): float
     {
-        return $this->amount->microToFloat();
+        return $this->amount->getFloat();
     }
 }

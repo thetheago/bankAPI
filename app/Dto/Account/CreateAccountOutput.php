@@ -15,6 +15,6 @@ class CreateAccountOutput extends AbstractCreateAccountInput
 
     public function getAmount(): float
     {
-        return $this->amount->microToFloat();
+        return $this->amount->getFloat();
     }
 }

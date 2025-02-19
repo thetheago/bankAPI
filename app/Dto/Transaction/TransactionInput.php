@@ -16,6 +16,6 @@ class TransactionInput extends AbstractTransactionDTO
 
     public function getAmount(): int
     {
-        return $this->amount->floatToMicro();
+        return $this->amount->getMicro();
     }
 }
