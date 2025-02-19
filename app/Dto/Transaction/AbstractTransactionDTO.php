@@ -11,7 +11,7 @@ class AbstractTransactionDTO
 {
     private(set) PaymentMethodEnum $paymentMethod;
 
-    private int $accountNumber;
+    private(set) int $accountNumber;
 
     protected Amount $amount;
 
@@ -20,10 +20,5 @@ class AbstractTransactionDTO
         $this->paymentMethod = $paymentMethod;
         $this->accountNumber = $accountNumber;
         $this->amount = $amount;
-    }
-
-    public function getAccountNumebr(): int
-    {
-        return $this->accountNumber;
     }
 }

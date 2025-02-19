@@ -8,5 +8,5 @@ use App\Dto\Transaction\TransactionInput;
 
 interface ITransactionRepository
 {
-    public function doTransaction(TransactionInput $input);
+    public function storeTransaction(TransactionInput $input);
 }

@@ -6,11 +6,15 @@ namespace App\Repository\Transaction;
 
 use App\Dto\Transaction\TransactionInput;
 use App\Interface\Transaction\ITransactionRepository;
+use App\Models\Transaction;
 
 class TransactionRepository implements ITransactionRepository
 {
-    public function doTransaction(TransactionInput $input)
+    public function storeTransaction(TransactionInput $input)
     {
-        // TODO: Implement doTransaction() method.
+        return Transaction::query()->create([
+            'accountNumber' => $input->accountNumber,
+            'amount' => $input->getAmount()
+        ]);
     }
 }

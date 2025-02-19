@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory\Transaction;
 
 use App\Dto\Transaction\TransactionInput;
+use App\Enum\PaymentMethodEnum;
 use App\Interface\IInputDTOFactory;
 use App\ValueObject\Amount;
 use Illuminate\Http\Request;
@@ -18,7 +19,7 @@ class TransactionInputFactory implements IInputDTOFactory
         $amount = $request->input('valor');
 
         return new TransactionInput(
-            paymentMethod: $paymentMethod,
+            paymentMethod: PaymentMethodEnum::from($paymentMethod),
             accountNumber: $accountNumber,
             amount: new Amount($amount)
         );

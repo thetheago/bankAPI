@@ -9,7 +9,7 @@ use App\ValueObject\Amount;
 
 class TransactionOutput extends AbstractTransactionDTO
 {
-    public function __construct(PaymentMethodEnum $paymentMethod, int $accountNumber, Amount $amount)
+    public function __construct(int $accountNumber, Amount $amount, ?PaymentMethodEnum $paymentMethod = PaymentMethodEnum::CREDIT)
     {
         parent::__construct($paymentMethod, $accountNumber, $amount);
     }
