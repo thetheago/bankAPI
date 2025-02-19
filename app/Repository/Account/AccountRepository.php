@@ -36,7 +36,10 @@ class AccountRepository implements IAccountRepository
         $affectedRows = Account::query()
             ->where('account_number', $accountNumber)
             ->where('version', $version) // Lock optmist
-            ->update(['amount' => ($amount - $amountToDiscount)]);
+            ->update([
+                'amount' => ($amount - $amountToDiscount),
+                'version' => $version + 1
+            ]);
 
         if ($affectedRows === 0) { // Means that the version already changed by another thread.
             throw TransactionErrorException::create();
