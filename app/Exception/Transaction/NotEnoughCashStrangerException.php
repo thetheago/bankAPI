@@ -14,13 +14,19 @@ class NotEnoughCashStrangerException extends DomainException implements ICustomE
     public static function create(int $accountNumber, PaymentMethodEnum $paymentMethodEnum): self
     {
         return match ($paymentMethodEnum) {
-            PaymentMethodEnum::PIX    => self::message(sprintf('A conta %s não tem dinheiro suficiente para realizar a transação.', $accountNumber)),
-            PaymentMethodEnum::CREDIT => self::message(sprintf('A conta %s não tem dinheiro suficiente para realizar a transação.', $accountNumber)),
-            PaymentMethodEnum::DEBIT  => self::message(sprintf('A conta %s não tem dinheiro suficiente para realizar a transação.', $accountNumber)),
+            PaymentMethodEnum::PIX    => self::message(
+                sprintf('A conta %s não tem dinheiro suficiente para realizar a transação.', $accountNumber)
+            ),
+            PaymentMethodEnum::CREDIT => self::message(
+                sprintf('A conta %s não tem dinheiro suficiente para realizar a transação.', $accountNumber)
+            ),
+            PaymentMethodEnum::DEBIT  => self::message(
+                sprintf('A conta %s não tem dinheiro suficiente para realizar a transação.', $accountNumber)
+            ),
         };
     }
 
-    static function message(String  $message): self
+    private static function message(String  $message): self
     {
         return new self(
             message: $message,

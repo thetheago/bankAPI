@@ -22,7 +22,10 @@ class CreateAccount
         try {
             $account = $this->accountRepository->create($input->getAmount(), $input->getAccountNumber());
 
-            return new CreateAccountOutput(amount: new Amount($account->getAttribute('amount')),
+            return new CreateAccountOutput(
+                amount: new Amount(
+                    $account->getAttribute('amount')
+                ),
                 accountNumber: $account->getAttribute('account_number')
             );
         } catch (UniqueConstraintViolationException $e) {
