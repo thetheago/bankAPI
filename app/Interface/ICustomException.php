@@ -2,6 +2,8 @@
 
 namespace App\Interface;
 
-interface ICustomException
+use Throwable;
+
+interface ICustomException extends Throwable
 {
 }
