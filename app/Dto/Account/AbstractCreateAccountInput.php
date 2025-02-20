@@ -22,5 +22,4 @@ class AbstractCreateAccountInput
     {
         return $this->accountNumber;
     }
-
 }

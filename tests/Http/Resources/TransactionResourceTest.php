@@ -12,6 +12,14 @@ use Tests\TestCase;
 
 class TransactionResourceTest extends TestCase
 {
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        // A amount tratou a imprecisão dos float mas no teste fica dando assert errado pq arredonda.
+        ini_set('precision', 17);
+    }
+
     public function testToArray()
     {
         $accountNumber = $this->faker->randomNumber();
