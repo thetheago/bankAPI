@@ -12,6 +12,18 @@ abstract class TestCase extends BaseTestCase
 
     const int MICRO_BASE = 100000;
 
+    protected function setUp(): void
+    {
+        parent::setUp();
+        $this->getConnection()->beginTransaction();
+    }
+
+    protected function tearDown(): void
+    {
+        $this->getConnection()->rollBack();
+        parent::tearDown();
+    }
+
     public static function instanceNewAmountSucessfullyProvider()
     {
         $faker = Factory::create();
