@@ -15,6 +15,7 @@ abstract class TestCase extends BaseTestCase
     protected function setUp(): void
     {
         parent::setUp();
+        ini_set('precision', 17);
         $this->getConnection()->beginTransaction();
     }
 
