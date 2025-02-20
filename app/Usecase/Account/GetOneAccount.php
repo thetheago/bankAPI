@@ -14,8 +14,7 @@ class GetOneAccount
 {
     public function __construct(
         private IAccountRepository $accountRepository
-    )
-    {}
+    ) {}
 
     public function execute(GetOneAccountInput $input): CreateAccountOutput
     {

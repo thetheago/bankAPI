@@ -18,8 +18,7 @@ class TransactionUseCase
     public function __construct(
         private readonly IAccountRepository $accountRepository,
         private readonly ITransactionRepository $transactionRepository
-    )
-    {}
+    ) {}
 
     public function execute(TransactionInput $input): TransactionOutput
     {
