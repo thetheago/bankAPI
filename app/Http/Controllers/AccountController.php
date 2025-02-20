@@ -31,10 +31,6 @@ class AccountController extends Controller
 
     public function fetchOne(GetOneAccountRequest $request): JsonResponse
     {
-        $teste = new Amount(12345.1234989);
-        dd($teste->getMicro());
-
-
         $input = GetOneAccountInputFactory::createFromRequest($request);
         $useCase = new GetOneAccount(new AccountRepository());
         $output = $useCase->execute($input);

@@ -10,7 +10,7 @@ abstract class TestCase extends BaseTestCase
 {
     use WithFaker;
 
-    public static function testInstanceNewAmountSucessfullyProvider()
+    public static function instanceNewAmountSucessfullyProvider()
     {
         $faker = Factory::create();
 

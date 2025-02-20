@@ -1,9 +1,8 @@
 <?php
 
-namespace Tests\Unit\ValueObject;
+namespace Tests\ValueObject;
 
 use App\ValueObject\Amount;
-use Faker\Factory;
 use Illuminate\Foundation\Testing\WithFaker;
 use InvalidArgumentException;
 use Tests\TestCase;
@@ -31,7 +30,7 @@ class AmountTest extends TestCase
     }
 
     /**
-     * @dataProvider testInstanceNewAmountSucessfullyProvider
+     * @dataProvider instanceNewAmountSucessfullyProvider
      */
     public function testInstanceNewAmountSucessfully($randomAmount)
     {
@@ -41,7 +40,7 @@ class AmountTest extends TestCase
     }
 
     /**
-     * @dataProvider testInstanceNewAmountSucessfullyProvider
+     * @dataProvider instanceNewAmountSucessfullyProvider
      */
     public function testGetMicro($randomAmount)
     {
@@ -77,8 +76,7 @@ class AmountTest extends TestCase
         $amount = new Amount($randomAmount);
         $float = $amount->getFloat();
         assertEquals($randomAmount, $float);
-//
-        $micro = $amount->getMicro();
+
         $this->assertEquals($randomAmount * self::MICRO_BASE, $amount->getMicro());
     }
 }
