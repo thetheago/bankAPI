@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers;
 
+use App\ValueObject\Amount;
 use Illuminate\Http\JsonResponse;
 
 use App\Factory\Account\CreateAccountInputFactory;
@@ -30,6 +31,10 @@ class AccountController extends Controller
 
     public function fetchOne(GetOneAccountRequest $request): JsonResponse
     {
+        $teste = new Amount(12345.1234989);
+        dd($teste->getMicro());
+
+
         $input = GetOneAccountInputFactory::createFromRequest($request);
         $useCase = new GetOneAccount(new AccountRepository());
         $output = $useCase->execute($input);

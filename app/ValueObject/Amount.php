@@ -23,7 +23,7 @@ class Amount
 
     public function getFloat(): float
     {
-        return (float) $this->amount->div((string) self::MICRO_BASE)->value;
+        return (float) $this->amount->value;
     }
 
     public function getMicro(): int
