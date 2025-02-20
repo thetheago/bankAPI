@@ -54,14 +54,8 @@
             "Composer\\Config::disableProcessTimeout",
             "npx concurrently -c \"#93c5fd,#c4b5fd,#fb7185,#fdba74\" \"php artisan serve\" \"php artisan queue:listen --tries=1\" \"php artisan pail --timeout=0\" \"npm run dev\" --names=server,queue,logs,vite"
         ],
-        "psr2":[
-            "vendor/squizlabs/php_codesniffer/bin/phpcs --standard=PSR2 --extensions=php,inc,lib --ignore=*/Migrations/* app/"
-        ],
-        "tests": "vendor/phpunit/phpunit/phpunit -c tests/phpunit.unit.xml --no-coverage",
-        "coverage": "vendor/phpunit/phpunit/phpunit -c tests/phpunit.unit.xml",
-        "coverage-show": [
-            "@coverage",
-            "xdg-open tests/_reports/unit/coverage/index.html"
+        "coverage-html": [
+            "vendor/bin/phpunit --coverage-html test-coverage"
         ]
     },
     "extra": {

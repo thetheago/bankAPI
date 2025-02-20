@@ -21,4 +21,9 @@ class AbstractTransactionDTO
         $this->accountNumber = $accountNumber;
         $this->amount = $amount;
     }
+
+    public function getAccountNumber(): int
+    {
+        return $this->accountNumber;
+    }
 }

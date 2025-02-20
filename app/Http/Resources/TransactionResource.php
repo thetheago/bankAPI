@@ -18,7 +18,7 @@ class TransactionResource extends JsonResource
         /* @var TransactionOutput $this */
 
         return [
-            'numero_conta' => $this->accountNumber,
+            'numero_conta' => $this->getAccountNumber(),
             'saldo' => $this->getAmount()
         ];
     }

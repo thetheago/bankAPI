@@ -6,13 +6,17 @@
 >
     <testsuites>
         <testsuite name="Unit">
-            <directory>tests/Unit</directory>
+            <directory>tests</directory>
         </testsuite>
     </testsuites>
     <source>
         <include>
             <directory>app</directory>
         </include>
+        <exclude>
+            <directory>app/Models</directory>
+            <file>app/Dto/Account/GetOneAccountInput.php</file>
+        </exclude>
     </source>
     <php>
         <env name="APP_ENV" value="testing"/>

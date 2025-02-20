@@ -6,6 +6,7 @@ namespace App\Usecase\Account;
 
 use App\Dto\Account\CreateAccountInput;
 use App\Dto\Account\CreateAccountOutput;
+use App\Enum\AmountStateEnum;
 use App\Exception\Account\AccountAlreadyExistException;
 use App\Interface\Account\IAccountRepository;
 use App\ValueObject\Amount;
@@ -23,9 +24,8 @@ class CreateAccount
             $account = $this->accountRepository->create($input->getAmount(), $input->getAccountNumber());
 
             return new CreateAccountOutput(
-                amount: new Amount(
-                    $account->getAttribute('amount')
-                ),
+                amount: new Amount($account->getAttribute('amount'),
+                amountState: AmountStateEnum::MICRO),
                 accountNumber: $account->getAttribute('account_number')
             );
         } catch (UniqueConstraintViolationException $e) {
