@@ -23,12 +23,12 @@ Se quiser rodar sem o -d espere até aparecer a informação de que o servidor f
 
 Aqui um desenho do que havia planejado antes de começar a mexer no código.
 
-<img src="https://drive.google.com/file/d/1uML30nhLbQMkdO6L83vq7RAOu7RuCfCI/view?usp=drive_link">
+![Preview](public/mapa-mental.png)
 
 ## Cobertura de testes 🦺
 Infelizmente não consegui cobrir tudo a tempo, mas cobri as principais ações.
 
-<img src="https://drive.google.com/file/d/1fNPYgvJy7dk6A8p4tXfMI-DeXjVgqtOJ/view?usp=sharing">
+![Preview](public/code-cove.png)
 
 
 ## Endpoints
