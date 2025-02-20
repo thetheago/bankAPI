@@ -10,8 +10,6 @@ use Tests\TestCase;
 
 class CreateAccountOutputTest extends TestCase
 {
-    const int MICRO_BASE = 100000;
-
     protected function setUp(): void
     {
         parent::setUp();

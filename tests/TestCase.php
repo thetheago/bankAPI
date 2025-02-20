@@ -10,6 +10,8 @@ abstract class TestCase extends BaseTestCase
 {
     use WithFaker;
 
+    const int MICRO_BASE = 100000;
+
     public static function instanceNewAmountSucessfullyProvider()
     {
         $faker = Factory::create();

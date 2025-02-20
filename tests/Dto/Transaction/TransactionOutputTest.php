@@ -1,16 +1,19 @@
 <?php
 
-namespace Tests\Dto\Account;
+namespace Tests\Dto\Transaction;
 
 use App\Dto\Account\AbstractCreateAccountInput;
 use App\Dto\Account\CreateAccountInput;
+use App\Dto\Transaction\AbstractTransactionDTO;
+use App\Dto\Transaction\TransactionInput;
+use App\Dto\Transaction\TransactionOutput;
+use App\Enum\PaymentMethodEnum;
 use App\ValueObject\Amount;
 use Tests\TestCase;
 
-class CreateAccountInputTest extends TestCase
-{
-    const int MICRO_BASE = 100000;
 
+class TransactionOutputTest extends TestCase
+{
     protected function setUp(): void
     {
         parent::setUp();
@@ -25,9 +28,9 @@ class CreateAccountInputTest extends TestCase
         $amount = new Amount($randomFloat);
         $accountNumber = $this->faker->randomNumber();
 
-        $input = new CreateAccountInput($amount, $accountNumber);
-        $this->assertEquals($randomFloat * self::MICRO_BASE, $input->getAmount());
+        $input = new TransactionOutput($accountNumber, $amount);
+        $this->assertEquals($randomFloat, $input->getAmount());
         $this->assertEquals($accountNumber, $input->getAccountNumber());
-        $this->assertInstanceOf(AbstractCreateAccountInput::class, $input);
+        $this->assertInstanceOf(AbstractTransactionDTO::class, $input);
     }
 }
