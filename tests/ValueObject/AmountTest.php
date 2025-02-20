@@ -2,6 +2,7 @@
 
 namespace Tests\ValueObject;
 
+use App\Enum\AmountStateEnum;
 use App\ValueObject\Amount;
 use Illuminate\Foundation\Testing\WithFaker;
 use InvalidArgumentException;
@@ -26,7 +27,7 @@ class AmountTest extends TestCase
     {
         $this->expectException(InvalidArgumentException::class);
         $this->expectExceptionMessage('Saldo não deve ser negativo');
-        new Amount(-3);
+        new Amount(-3, AmountStateEnum::FLOAT);
     }
 
     /**
@@ -34,7 +35,7 @@ class AmountTest extends TestCase
      */
     public function testInstanceNewAmountSucessfully($randomAmount)
     {
-        $amount = new Amount($randomAmount);
+        $amount = new Amount($randomAmount, AmountStateEnum::FLOAT);
         $this->assertInstanceOf(Amount::class, $amount);
         $this->assertEquals($randomAmount, $amount->amount->value);
     }
@@ -44,7 +45,7 @@ class AmountTest extends TestCase
      */
     public function testGetMicro($randomAmount)
     {
-        $amount = new Amount($randomAmount);
+        $amount = new Amount($randomAmount, AmountStateEnum::FLOAT);
         $this->assertInstanceOf(Amount::class, $amount);
         $this->assertEquals($randomAmount, $amount->amount->value);
     }
@@ -52,28 +53,28 @@ class AmountTest extends TestCase
     public function testGetFloatFromAmount()
     {
         $randomAmount = $this->faker->randomFloat(2, 0, 99);
-        $amount = new Amount($randomAmount);
+        $amount = new Amount($randomAmount, AmountStateEnum::FLOAT);
         $this->assertEquals($randomAmount, $amount->getFloat());
     }
 
     public function testGetIntFromAmount()
     {
         $randomAmount = $this->faker->randomNumber(5);
-        $amount = new Amount($randomAmount);
+        $amount = new Amount($randomAmount, AmountStateEnum::FLOAT);
         $this->assertEquals($randomAmount, $amount->getFloat());
     }
 
     public function testGetMicroBasedFromFloat()
     {
         $randomAmount = $this->faker->randomNumber(1);
-        $amount = new Amount($randomAmount);
+        $amount = new Amount($randomAmount, AmountStateEnum::FLOAT);
         $this->assertEquals($randomAmount * self::MICRO_BASE, $amount->getMicro());
     }
 
     public function testGetMicroAfterGotFloat()
     {
         $randomAmount = $this->faker->randomNumber(1);
-        $amount = new Amount($randomAmount);
+        $amount = new Amount($randomAmount, AmountStateEnum::FLOAT);
         $float = $amount->getFloat();
         assertEquals($randomAmount, $float);
 

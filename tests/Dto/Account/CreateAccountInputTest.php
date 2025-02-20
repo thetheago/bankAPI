@@ -4,6 +4,7 @@ namespace Tests\Dto\Account;
 
 use App\Dto\Account\AbstractCreateAccountInput;
 use App\Dto\Account\CreateAccountInput;
+use App\Enum\AmountStateEnum;
 use App\ValueObject\Amount;
 use Tests\TestCase;
 
@@ -22,7 +23,7 @@ class CreateAccountInputTest extends TestCase
     public function testGetAmountIntToStoreInSystem()
     {
         $randomFloat = $this->faker->randomFloat(nbMaxDecimals: 0, max: 9999);
-        $amount = new Amount($randomFloat);
+        $amount = new Amount($randomFloat, AmountStateEnum::FLOAT);
         $accountNumber = $this->faker->randomNumber();
 
         $input = new CreateAccountInput($amount, $accountNumber);

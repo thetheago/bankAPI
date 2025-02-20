@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Factory\Account;
 
+use App\Enum\AmountStateEnum;
 use Illuminate\Http\Request;
 
 use App\Dto\Account\CreateAccountInput;
@@ -19,6 +20,6 @@ class CreateAccountInputFactory implements IInputDTOFactory
         $amount        = $request->input("saldo");
         $accountNumber = $request->input("numero_conta");
 
-        return new CreateAccountInput(new Amount($amount), $accountNumber);
+        return new CreateAccountInput(new Amount($amount, AmountStateEnum::FLOAT), $accountNumber);
     }
 }

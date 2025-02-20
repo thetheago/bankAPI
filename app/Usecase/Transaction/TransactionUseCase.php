@@ -6,6 +6,7 @@ namespace App\Usecase\Transaction;
 
 use App\Dto\Transaction\TransactionInput;
 use App\Dto\Transaction\TransactionOutput;
+use App\Enum\AmountStateEnum;
 use App\Exception\Transaction\NotEnoughCashStrangerException;
 use App\Factory\Transaction\TransactionStrategyFactory;
 use App\Interface\Account\IAccountRepository;
@@ -43,7 +44,7 @@ class TransactionUseCase
 
         return new TransactionOutput(
             accountNumber: $input->accountNumber,
-            amount: new Amount($accountAmount - $amountWithFeeToDiscount)
+            amount: new Amount($accountAmount - $amountWithFeeToDiscount, AmountStateEnum::MICRO)
         );
     }
 }

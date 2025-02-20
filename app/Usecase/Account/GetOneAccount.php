@@ -6,6 +6,7 @@ namespace App\Usecase\Account;
 
 use App\Dto\Account\CreateAccountOutput;
 use App\Dto\Account\GetOneAccountInput;
+use App\Enum\AmountStateEnum;
 use App\Interface\Account\IAccountRepository;
 use App\ValueObject\Amount;
 
@@ -20,7 +21,8 @@ class GetOneAccount
     {
         $account = $this->accountRepository->getOneByAccountNumber($input->accountNumber);
         return new CreateAccountOutput(
-            amount: new Amount((int) $account->getAttribute('amount')),
+            amount: new Amount((int) $account->getAttribute('amount'),
+            amountState: AmountStateEnum::MICRO),
             accountNumber: $account->getAttribute('account_number')
         );
     }

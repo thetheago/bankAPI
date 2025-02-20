@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace App\Factory\Transaction;
 
 use App\Dto\Transaction\TransactionInput;
+use App\Enum\AmountStateEnum;
 use App\Enum\PaymentMethodEnum;
 use App\Interface\IInputDTOFactory;
 use App\ValueObject\Amount;
@@ -21,7 +22,7 @@ class TransactionInputFactory implements IInputDTOFactory
         return new TransactionInput(
             paymentMethod: PaymentMethodEnum::from($paymentMethod),
             accountNumber: $accountNumber,
-            amount: new Amount($amount)
+            amount: new Amount($amount, AmountStateEnum::FLOAT)
         );
     }
 }

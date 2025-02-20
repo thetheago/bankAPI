@@ -6,6 +6,7 @@ use App\Dto\Account\AbstractCreateAccountInput;
 use App\Dto\Account\CreateAccountInput;
 use App\Dto\Transaction\AbstractTransactionDTO;
 use App\Dto\Transaction\TransactionInput;
+use App\Enum\AmountStateEnum;
 use App\Enum\PaymentMethodEnum;
 use App\ValueObject\Amount;
 use Tests\TestCase;
@@ -24,7 +25,7 @@ class TransactionInputTest extends TestCase
     public function testGetAmountIntToStoreInSystem()
     {
         $randomFloat = $this->faker->randomFloat(nbMaxDecimals: 0, max: 9999);
-        $amount = new Amount($randomFloat);
+        $amount = new Amount($randomFloat, AmountStateEnum::FLOAT);
         $accountNumber = $this->faker->randomNumber();
 
         $input = new TransactionInput(PaymentMethodEnum::PIX, $accountNumber, $amount);
