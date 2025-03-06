@@ -48,7 +48,7 @@ paylod de envio
 }
 ```
 
-# GET /conta?nome_conta=234
+# GET /conta?numero_conta=234
 ```
 
 ```
